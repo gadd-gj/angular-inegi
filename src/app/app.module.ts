@@ -8,6 +8,9 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
 import { LoginComponent } from './login/login.component';
 import { SigninComponent } from './signin/signin.component';
 import { FormsModule } from '@angular/forms';
+import { MapComponent } from './map/map.component';
+
+
 
 
 @NgModule({
@@ -15,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     LandingpageComponent,
     LoginComponent,
-    SigninComponent
+    SigninComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
