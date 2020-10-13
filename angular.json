@@ -111,7 +111,7 @@
               "e2e/tsconfig.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "/node_modules/"
             ]
           }
         },
@@ -132,6 +132,6 @@
   },
   "defaultProject": "angular-inegi",
   "cli": {
-    "analytics": "e28337e7-d97a-4736-876e-b1dc91d52ddd"
+    "analytics": "8e28c51f-0f5c-4133-a12d-9f2cff4bb3dc"
   }
 }
