@@ -1,0 +1,41 @@
+<div class="portada" id="hero" style="background-image: url(./assets/img/inegi.jpg)">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="titulo text-center"><a routerLink="/landingpage">CHAPULINES INC</a></h2>
+            <h4 class="subtitulo text-center">Registro</h4>
+            <form class="text-center" (ngSubmit)="validar()" >
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <input type="text" id="name" class="form-control" placeholder="Nombre Completo" name="name" [(ngModel)]="name">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input type="text" id="age" class="form-control" placeholder="Edad" name="edad" [(ngModel)]="age">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input type="email" id="email" class="form-control" placeholder="Correo eléctronico" name="email" [(ngModel)]="email">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input type="password" id="password" class="form-control text-light" placeholder="Contraseña" name="password" [(ngModel)]="password">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="submit" class="btn btn-info btn1" value="REGISTRARSE">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <a class="btn btn-danger btn2" routerLink="/landingpage">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p>&copy; 2020 Chapulines, Inc.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

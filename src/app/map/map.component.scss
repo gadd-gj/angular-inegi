@@ -1,0 +1,70 @@
+/*Navbar Section*/
+.navbar{
+  color: white;
+  font-family: 'Candara';
+  background-color: #343434;
+  font-size: 20px;
+}
+.navbar a{
+color: white;
+font-family: 'Candara';
+margin-left: 10px;
+font-size: 20px;
+}
+.navbar a:hover{
+color: rgb(140, 140, 140);
+font-family: 'Candara';
+}
+.navbar .btn{
+  border-radius: 50px;
+  margin-right: 20px;
+  font-size: 20px;
+}
+.navbar .btn:hover{
+  color: white;
+}
+/*Navbar Section*/
+
+/*info card*/
+.card {
+  margin-top: 10px;
+  background-color: #d3d3d3;
+  border: transparent;
+}
+/*end info card*/
+
+/*Footer*/
+.footer {
+  background-color: #343434;
+  color:#D3D3D3;
+  font-family: 'Candara';
+  padding:5px;
+  margin: 0;
+  
+}
+/*End Footer*/
+
+/*Map*/
+.map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin:0;
+  z-index: -1;
+  background-color: #d3d3d3;
+}
+
+.map-frame {
+  height: 550px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+  margin-top: 20px;
+}
+
+#map {
+  height: 100%;
+}

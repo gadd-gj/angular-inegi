@@ -1,0 +1,196 @@
+/* GLOBAL STYLES */
+.body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #d3d3d3;
+  }
+  
+  /*Navbar Section*/
+  .navbar{
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: auto;
+    min-height: 8vh;
+    color: white;
+    font-family: 'Segoe UI';
+    background-color: #05454f;
+    font-size: 20px;
+  }
+  .navbar a{
+    color: white;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+  }
+  .navbar a:hover{
+    color: rgb(140, 140, 140);
+    font-family: 'Segoe UI';
+  }
+  .navbar .btn{
+    border-radius: 50px;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .navbar .btn:hover{
+    color: white;
+  }
+  /* End Navbar Section*/
+  
+  
+  .portada {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* Hero Section */
+  #hero{
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+  }
+  #hero::after{
+    content: '';
+    position:absolute;
+    left:0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    z-index: -1;
+  }
+  #hero h1{
+    display: block;
+    width: fit-content;
+    font-size: 60px;
+    position: relative;
+    color: white;
+    font-family: 'Segoe UI';
+    font-style: inherit;
+    text-align: center;
+    font-weight: bolder;
+  }
+  #hero h4{
+    font-family: 'Segoe UI';
+  }
+  #hero a{
+    border-radius: 50px;
+    display: inline-block;
+    padding: 5px 20px;
+    background-color: #1B7D8C;
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 80px;
+    transition: .3s ease;
+    transition-property: background-color, color;
+    font-family: 'Segoe UI';
+  }
+  #hero a:hover{
+    color: white;
+    background-color: #05454f;
+  }
+  /* End Hero Section */
+  
+  /* Featurettes */
+  .featurette-divider {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  }
+  .featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: .05rem;
+    font-family: 'Segoe UI';
+    font-weight: bolder;
+  }
+  
+  #servicios p {
+    font-size: 27.5px;
+  }
+  /* Featurettes */
+  
+  /* Contact Section*/
+  .contacto {
+    margin: 20px;
+  }
+  .contacto h1 {
+    font-family: 'Segoe UI';
+    color:#1B7D8c;
+    text-align: center;
+    font-weight: bold;
+  }
+  #contact .card {
+    margin: 20px;
+    flex-direction: row;
+    text-align: center;
+    border-radius: 5px;  
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    box-shadow: 0px 0px 12px 0 #34343487;
+    transition: .3s ease box-shadow;
+  }
+  #contact .card:hover{
+    box-shadow: 0px 0px 8px 0 #3434342c;
+  }
+  #contact h3 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    font-family: 'Segoe UI';
+  }
+  #contact h4 {
+    font-size: 20px;
+    line-height: 32px;
+    font-family: 'Segoe UI';
+  }
+  /* End Contact Section*/
+  
+  /*Footer*/
+  footer {
+    background-color: #343434;
+    color:#D3D3D3;
+    font-family: 'Segoe UI';
+    padding:20px;
+    font-size: 20px;
+  }
+  footer .btn{
+    background-color: #1B7D8C;
+    color:white;
+    border-radius: 50px;
+    font-size: 20px;
+  }
+  footer .btn:hover{
+    color: white;
+    background-color: #05454f;
+  }
+  /*End Footer*/
+  
+  /* RESPONSIVE CSS*/
+  @media (min-width: 40em) {
+    .carousel-caption p {
+      margin-bottom: 1.25rem;
+      font-size: 1.25rem;
+      line-height: 1.4;
+      font-family: 'Segoe UI';
+    }
+  
+    .featurette-heading {
+      font-size: 50px;
+      font-family: 'Segoe UI';
+    }
+  }
+  
+  @media (min-width: 62em) {
+    .featurette-heading {
+      margin-top: 7rem;
+      font-family: 'Segoe UI';
+    }
+  }
+  /* END RESPONSIVE CSS*/
