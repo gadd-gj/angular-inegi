@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { LoginComponent } from './login/login.component';
 import { SigninComponent } from './signin/signin.component';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SigninComponent } from './signin/signin.component';
     AppComponent,
     LandingpageComponent,
     LoginComponent,
-    SigninComponent
+    SigninComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
