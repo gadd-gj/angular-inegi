@@ -22,4 +22,13 @@ describe('SigninComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Los campos no pueden estar vacios', () => {
+
+    component.vacio();
+
+    expect(component.valUser()).toBeFalse();
+  
+  });
+
 });
