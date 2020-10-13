@@ -1,0 +1,98 @@
+.portada {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Hero Section 
+.portada{
+    background-image: url(./assets/img/inegi.jpg); 
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+}
+*/
+#hero::after{
+    content: '';
+    position:absolute;
+    left:0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+    z-index: -1;
+}
+/* End Hero Section */
+
+/* Card Section */
+.card {
+    background-color: #000000b6;
+    width: 40%;
+}
+a{
+    color: #d3d3d3;
+}
+a:hover{
+    color: rgb(255, 255, 255);
+  font-family: 'Segoe UI';
+}
+
+.titulo {
+    color: #d3d3d3;
+    font-family: 'Segoe UI';
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.subtitulo {
+    color: #bdbdbd;
+    font-family: 'Segoe UI';
+    margin-bottom: 35px;
+}
+input{
+    font-family: 'Segoe UI';
+    font-size: 20px;
+    border-radius: 50px;
+    background-color: #343434;
+    border: transparent;
+}
+input::placeholder { 
+    color: white; 
+    font-style: oblique;
+    font-family: 'Segoe UI'; 
+    font-size: 20px;
+}
+
+.btn1{
+    background-color: #1B7D8c;
+    border-radius: 100px;
+    color:#D3D3D3;
+    border: transparent;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+    letter-spacing: .1rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.btn2{
+    border-radius: 100px;
+    color:#D3D3D3;
+    border: transparent;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+    letter-spacing: .1rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 15px;
+    font-family: 'Segoe UI';
+    color: #bdbdbd;
+}
+/* Card Section */
