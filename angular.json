@@ -128,10 +128,6 @@
           }
         }
       }
-    }
-  },
-  "defaultProject": "angular-inegi",
-  "cli": {
-    "analytics": "6a6dd22f-268a-4927-b4d3-e6ed73fa4863"
-  }
+    }},
+  "defaultProject": "angular-inegi"
 }
