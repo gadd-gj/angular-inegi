@@ -3,23 +3,23 @@
         <div class="card-body">
             <h2 class="titulo text-center"><a routerLink="/landingpage">CHAPULINES INC</a></h2>
             <h4 class="subtitulo text-center">Registro</h4>
-            <form class="text-center">
+            <form class="text-center" (ngSubmit)="validar()" >
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-row">
                             <div class="form-group col-md-8">
-                                <input type="text" id="name" class="form-control" placeholder="Nombre Completo" name="name">
+                                <input type="text" id="name" class="form-control" placeholder="Nombre Completo" name="name" [(ngModel)]="name">
                             </div>
                             <div class="form-group col-md-4">
-                                <input type="text" id="age" class="form-control" placeholder="Edad" name="edad">
+                                <input type="text" id="age" class="form-control" placeholder="Edad" name="edad" [(ngModel)]="age">
                             </div>
                         </div>
                     </div>
                     <div class="form-group col-md-12">
-                        <input type="email" id="email" class="form-control" placeholder="Correo eléctronico" name="email">
+                        <input type="email" id="email" class="form-control" placeholder="Correo eléctronico" name="email" [(ngModel)]="email">
                     </div>
                     <div class="form-group col-md-12">
-                        <input type="password" id="password" class="form-control text-light" placeholder="Contraseña" name="password">
+                        <input type="password" id="password" class="form-control text-light" placeholder="Contraseña" name="password" [(ngModel)]="password">
                     </div>
                     <div class="col-md-12">
                         <div class="form-row">
