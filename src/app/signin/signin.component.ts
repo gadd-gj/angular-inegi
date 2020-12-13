@@ -16,6 +16,7 @@ export class SigninComponent implements OnInit {
   email: string ='';
   password: string ='';
   res:boolean;
+  respuesta = '';
 
   listUser: User[] = [
     {id:1, username:"gustavo@gmail.com", password:"123456"},
@@ -47,54 +48,53 @@ export class SigninComponent implements OnInit {
   
 
   validar(){
-    let respueta;
     if (this.vacio()) {
       if (this.age > -1 && this.age < 120) {
         if (this.email.match(this.emailPattern)) {
           if (this.valUser()) {
             this.route.navigate(['/map']);
           }else{
-            respueta = 'El Usuario existe';
+            this.respuesta = 'El usuario existe';
             Swal.fire({
               title: 'Error!',
-              text: `${respueta}`,
+              text: `${this.respuesta}`,
               icon: 'error',
               showConfirmButton: false,
               timer: 3000
             });
           }
         } else {
-          respueta = 'El correo no es valido';
+          this.respuesta = 'El correo no es valido';
         Swal.fire({
           title: 'Error!',
-          text: `${respueta}`,
+          text: `${this.respuesta}`,
           icon: 'error',
           showConfirmButton: false,
           timer: 3000
         });
         }
       }else{
-        respueta = 'La edad no es valida';
+        this.respuesta = 'La edad no es valida';
         Swal.fire({
           title: 'Error!',
-          text: `${respueta}`,
+          text: `${this.respuesta}`,
           icon: 'error',
           showConfirmButton: false,
           timer: 3000
         });
       }
     } else {
-      respueta = 'Lo campos están vacíos';
+      this.respuesta = 'Los campos están vacíos';
         Swal.fire({
           title: 'Error!',
-          text: `${respueta}`,
+          text: `${this.respuesta}`,
           icon: 'error',
           showConfirmButton: false,
           timer: 3000
         });
     }
 
-    return respueta;
+    return this.respuesta;
   }
 
 

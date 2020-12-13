@@ -20,8 +20,12 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
   res: boolean;
+  respuesta: string = '';
+  variable:Router ;
 
-  constructor(private route:Router) { }
+  constructor(private route:Router) { 
+    this.variable = route;
+   }
 
   ngOnInit(): void {
     
@@ -39,32 +43,32 @@ export class LoginComponent implements OnInit {
   }
 
   validar(){
-    let res;
+    this.respuesta;
     if (this.username !="" && this.password !="") {
         if (this.valUser()) {
           this.route.navigate(['/map']);
         } else {
-          res = 'Usuario y/o contraseña incorrecto';
+          this.respuesta = 'Usuario y/o contraseña incorrecto';
           Swal.fire({
             title: 'Error!',
-            text: `${res}`,
+            text: `${this.respuesta}`,
             icon: 'error',
             showConfirmButton: false,
             timer: 3000
           });
         }
     } else {
-      res = 'Lo campos están vacíos';
+      this.respuesta = 'Los campos están vacíos';
         Swal.fire({
           title: 'Error!',
-          text: `${res}`,
+          text: `${this.respuesta}`,
           icon: 'error',
           showConfirmButton: false,
           timer: 3000
         });
     }
 
-    return res;
+    return this.respuesta;
   }
 
   
