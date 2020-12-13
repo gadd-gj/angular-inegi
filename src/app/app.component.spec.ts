@@ -23,7 +23,7 @@ describe('AppComponent', () => {
   xit(`should have as title 'angular-inegi'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular');
+    expect(app.title).toEqual('angular-inegi');
   });
 
   xit('should render title', () => {
