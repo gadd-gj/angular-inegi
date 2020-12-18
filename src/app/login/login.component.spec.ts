@@ -27,47 +27,4 @@ describe('LoginComponent', () => {
   });
 
 
-
-  it('Llamar a la funcion valUser()', () => {
-    let res = null;
-
-    component.username = 'gustavo@gmail.com';
-    component.password = '123456';
-
-    component.valUser();
-    res = component.res;
-
-    expect(res).toBe(true);
-
-  });
-
-
-  it('Llamar a la funcion validar() para validar que los campos no esten vacios', () => {
-
-    let res = '';
-
-    component.username = '';
-    component.password = '';
-
-    component.validar();
-    res = component.respuesta;
-
-    expect(res).toBe('Los campos están vacíos');
-
-  });
-
-  it('Llamar a la funcion validar() para validar usuario y contraseña', () => {
-
-    let res = '';
-
-    component.username = 'gadd@gmail.com';
-    component.password = '123789';
-
-    component.validar();
-    res = component.respuesta;
-
-    expect(res).toBe('Usuario y/o contraseña incorrecto');
-
-  });
-
 });
