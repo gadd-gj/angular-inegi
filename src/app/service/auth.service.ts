@@ -13,7 +13,7 @@ import { Pymes } from '../models/pyme.model';
 export class AuthService {
 
   
-  private url = "http://localhost:8080/api";
+  private url = "http://35.232.78.160:8080/api";
 
   
   userToken: String;
