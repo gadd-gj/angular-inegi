@@ -4,6 +4,7 @@ import * as L from 'leaflet';
 import { AuthService } from '../service/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { MakerService } from '../service/maker.service';
+import {Apollo, gql} from 'apollo-angular';
 
 @Component({
   selector: 'app-map',
@@ -19,11 +20,12 @@ export class MapComponent implements AfterViewInit {
 
 
 
-  constructor(private auth: AuthService, private router: Router, private marker: MakerService) { }
+  constructor(private auth: AuthService, private router: Router, private marker: MakerService, private apollo: Apollo) { }
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.getEstados();
+    //this.getEstados();
+    this.graphqlEstado();
   }
 
   private initMap(): void {
@@ -47,6 +49,23 @@ export class MapComponent implements AfterViewInit {
      this.arrEstados = estados;
     });
   
+  }
+
+  graphqlEstado(){
+    this.apollo
+    .watchQuery({
+      query: gql`
+        {
+          estados{
+            estado
+          }
+        }
+      `,
+    })
+    .valueChanges.subscribe((result: any) => {
+      this.arrEstados = result?.data?.estados;
+    });
+
   }
 
   changeEstado(){
