@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Router } from '@angular/router';
+import { usuarioModel } from '../models/usuario.model';
+import { AuthService } from '../service/auth.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -11,68 +14,52 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  listUser: User[] = [
-    {id:1, username:"gustavo@gmail.com", password:"123456"},
-    {id:2, username:"gaddiel@gmail.com", password:"123789"}
-  ];
+  usuario: usuarioModel;
+  remenber = false;
 
- 
-  username: string = '';
-  password: string = '';
-  res: boolean;
-  respuesta: string = '';
-  variable:Router ;
+  constructor( private auth: AuthService, private router: Router ) { }
 
-  constructor(private route:Router) { 
-    this.variable = route;
-   }
+  ngOnInit() {
+    this.usuario = new usuarioModel();
 
-  ngOnInit(): void {
-    
-  }
-
-  valUser(){
-    this.res = false;
-    for (const u of this.listUser) {
-      if (this.username === u.username && this.password === u.password) {
-        
-        this.res = true;
-      }
-    }
-    return this.res;
-  }
-
-  validar(){
-    this.respuesta;
-    if (this.username !="" && this.password !="") {
-        if (this.valUser()) {
-          this.route.navigate(['/map']);
-        } else {
-          this.respuesta = 'Usuario y/o contraseña incorrecto';
-          Swal.fire({
-            title: 'Error!',
-            text: `${this.respuesta}`,
-            icon: 'error',
-            showConfirmButton: false,
-            timer: 3000
-          });
-        }
-    } else {
-      this.respuesta = 'Los campos están vacíos';
-        Swal.fire({
-          title: 'Error!',
-          text: `${this.respuesta}`,
-          icon: 'error',
-          showConfirmButton: false,
-          timer: 3000
-        });
+    if (localStorage.getItem('email')) {
+      this.usuario.email = localStorage.getItem('email');
+      this.remenber = true;
     }
 
-    return this.respuesta;
   }
 
+
+  login(form: NgForm){
+    if (form.invalid) {
+      return;
+    }
   
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por Favor ...',
+    });
+    Swal.showLoading();
 
+    this.auth.login(this.usuario).subscribe(
+      resp =>{
+        Swal.close();
 
+        if (this.remenber) {
+          localStorage.setItem('email', this.usuario.email);
+        }
+
+        this.router.navigateByUrl('/map');
+      },(error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Al Autenticar',
+          text: "Usuario o Contraseña Invalidos",
+        });
+      }
+    );
+
+  }
 
 }

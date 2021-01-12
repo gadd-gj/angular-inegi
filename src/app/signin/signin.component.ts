@@ -2,101 +2,63 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Router } from '@angular/router';
+import { usuarioModel } from '../models/usuario.model';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../service/auth.service';
 
 @Component({
+ 
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
 
-  private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  name: string ='';
-  age: number = 0;
-  email: string ='';
-  password: string ='';
-  res:boolean;
-  respuesta = '';
+  usuario: usuarioModel = new usuarioModel();
 
-  listUser: User[] = [
-    {id:1, username:"gustavo@gmail.com", password:"123456"},
-    {id:2, username:"gaddiel@gmail.com", password:"123789"}
-  ];
 
-  constructor(private route:Router) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  vacio(){
-    this.res = false;
-    if (this.name != '' && this.email != '' && this.password != '') {
-      this.res = true;
-    } 
-    return this.res;
-  }
-
-  valUser(){
-    this.res = true;
-    for (const u of this.listUser) {
-      if (this.email === u.username) {
-        this.res = false;
-      }
-    }
-    return this.res;
-  }
   
 
-  validar(){
-    if (this.vacio()) {
-      if (this.age > -1 && this.age < 120) {
-        if (this.email.match(this.emailPattern)) {
-          if (this.valUser()) {
-            this.route.navigate(['/map']);
-          }else{
-            this.respuesta = 'El usuario existe';
-            Swal.fire({
-              title: 'Error!',
-              text: `${this.respuesta}`,
-              icon: 'error',
-              showConfirmButton: false,
-              timer: 3000
-            });
-          }
-        } else {
-          this.respuesta = 'El correo no es valido';
-        Swal.fire({
-          title: 'Error!',
-          text: `${this.respuesta}`,
-          icon: 'error',
-          showConfirmButton: false,
-          timer: 3000
-        });
-        }
-      }else{
-        this.respuesta = 'La edad no es valida';
-        Swal.fire({
-          title: 'Error!',
-          text: `${this.respuesta}`,
-          icon: 'error',
-          showConfirmButton: false,
-          timer: 3000
-        });
-      }
-    } else {
-      this.respuesta = 'Los campos están vacíos';
-        Swal.fire({
-          title: 'Error!',
-          text: `${this.respuesta}`,
-          icon: 'error',
-          showConfirmButton: false,
-          timer: 3000
-        });
+  onSubmit(form: NgForm){
+    if (form.invalid) {
+      return;
     }
 
-    return this.respuesta;
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por Favor ...',
+    });
+    Swal.showLoading();
+
+    this.auth.signup(this.usuario).subscribe(
+      resp =>{
+        Swal.close();
+        this.router.navigateByUrl('/map');
+      },(error)=>{
+        
+        Swal.fire({
+          icon: 'error',
+          title: 'Al Autenticar',
+          text: error.error.message,
+        });
+      }
+    );
+
   }
-
-
-
+  
+  
+  
+  // Swal.fire({
+  //   title: 'Error!',
+  //   text: `${this.respuesta}`,
+  //   icon: 'error',
+  //   showConfirmButton: false,
+  //   timer: 3000
+  // });
 }
