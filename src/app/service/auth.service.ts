@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { usuarioModel } from '../models/usuario.model';
+import { proyectModel, usuarioModel } from '../models/usuario.model';
 import { catchError, map, retry } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Estados } from '../models/estados.model';
@@ -11,12 +11,9 @@ import { Pymes } from '../models/pyme.model';
   providedIn: 'root'
 })
 export class AuthService {
+  private url = 'http://localhost:3000/api';
 
-  
-  private url = "http://35.232.78.160:8080/api";
-
-  
-  userToken: String;
+  userToken: string;
 
   constructor( private http: HttpClient ) {
     this.readToken();
@@ -25,35 +22,34 @@ export class AuthService {
    httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`  
-
+      Authorization: `Bearer ${localStorage.getItem('token')}`
     })
-  }  
-
-
+  };
   logout(){
     localStorage.removeItem('token');
   }
-  
-  login( usuario: usuarioModel ){
-    const authData = {
-      username: usuario.email,
-      password: usuario.password
-    };
 
-    return this.http.post(
-      `${this.url}/auth/signin`, 
-      authData
-      ).pipe(
+
+  login(usuario: usuarioModel ){
+    return this.http.post(`${this.url}/proyects`, usuario).pipe(
+        map( (resp: any) => {
+          this.saveToken(resp.accessToken);
+          return resp;
+        })
+      );
+  }
+
+  nuevoProyecto( proyects: proyectModel ){
+    return this.http.post(`${this.url}/proyects`, proyects).pipe(
         map( resp =>{
           this.saveToken(resp['accessToken']);
           return resp;
-        } )
+        })
       );
   }
 
   signup(usuario: usuarioModel){
-    
+
     const authData = {
       name: usuario.name,
       edad: usuario.edad,
@@ -63,7 +59,7 @@ export class AuthService {
     };
 
     return this.http.post(
-      `${this.url}/auth/signup`, 
+      `${this.url}/auth/signup`,
       authData
       ).pipe(
         map( resp =>{
@@ -73,7 +69,7 @@ export class AuthService {
       );
   }
 
-  private saveToken(idToken: string){
+  private saveToken(idToken: any){
     this.userToken = idToken;
     localStorage.setItem('token', idToken);
   }
@@ -93,33 +89,33 @@ export class AuthService {
 
 
   getEstados(): Observable<Estados> {
-    
+
     return this.http.get<Estados>(this.url + '/estados', this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
     )
-  }   
+  }
 
   getMunicipios(entidad): Observable<Municipio> {
-    
+
     return this.http.get<Municipio>(this.url + '/municipios?entidad=' + entidad, this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
     )
-  }   
+  }
 
 
   getPymes(estado, municipio): Observable<Pymes> {
-    
+
     return this.http.get<Pymes>(this.url + '/pymes?estado=' + estado +
     '&municipio=' + municipio, this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
     )
-  } 
+  }
 
   handleError(error) {
     let errorMessage = '';

@@ -3,17 +3,17 @@
         <div class="card-body">
             <h2 class="titulo text-center"><a routerLink="/">INEGI</a></h2>
             <h4 class="subtitulo text-center">Inicio de Sesión</h4>
-            <form class="text-center" (ngSubmit)="login(for)" #for="ngForm" >
+            <form class="text-center" (ngSubmit)="nuevoProyecto(for)" #for="ngForm" >
                 <span *ngIf="for.submitted && for.controls['email'].errors" class="text-danger animated fadeIn">El correo es obligatorio</span>
                 <div class="md-form">
                     <input type="email" id="email" class="form-control" 
                     required
-                    placeholder="Correo eléctronico" name="email" [(ngModel)]="usuario.email">
+                    placeholder="Correo eléctronico" name="nombre" [(ngModel)]="proyects.nombre">
                 </div>
                 <div class="md-form">
                     <span *ngIf="for.submitted && for.controls['password'].errors" class="text-danger animated fadeIn">La contraseña es obligatorio</span>
-                    <input type="password" id="password" name="password" class="form-control text-light" 
-                    required placeholder="Contraseña" [(ngModel)]="usuario.password">
+                    <input type="password" id="password" name="priority" class="form-control text-light" 
+                    required placeholder="Contraseña" [(ngModel)]="proyects.priority">
                 </div>
                     <input type="submit" class="btn btn-info" value="INICIAR SESIÓN" >
                 <div>
